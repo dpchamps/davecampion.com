@@ -1,0 +1,33 @@
+/*
+.container {
+    max-width: 600px;
+}
+*/
+body{
+    background: url('stressed_linen.png');
+}
+.full-height{
+    height: 100vh;
+}
+
+.main-font{
+    font-family: 'Rokkitt';
+    color: #e74c3c;
+    text-align: left;
+}
+.main-font strong{
+
+}
+.absolute-parent{
+    position: relative;
+}
+.absolute-center{
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    height: 200px;
+    margin: auto;
+}
+.narrow{
+    max-width: 400px;
+    width: 100%;
+}
