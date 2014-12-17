@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>It's almost Christmas!</title>
+      <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="./assets/main.css" />
+      <link href='./assets/fonts/stylesheet.css' rel='stylesheet' type='text/css'>
+      <link rel="shortcut icon" href="favicon.ico">
+    <style>
+      /* begin demo embedded styles */
+
+      /* end demo embedded styles */
+    </style>
+  </head>
+  <body>
+    <div id="clock"></div>
+    <a class="git" href="https://github.com/gasolinewaltz"><img src="./assets/images/GitHub-Mark-32px.png"></a>
+    <canvas id="canvas"></canvas>
+    <script src="./particleEngine.min.js"></script>
+    <script src="./assets/countdown.min.js"></script>
+    <script src="assets/canvas.js"></script>
+  <script>
+      var clock = document.getElementById('clock'),
+          tDate = new Date(2014,11, 25);
+      clock.innerHTML = countdown(tDate).toString() + "!";
+
+      setInterval(function(){
+          clock.innerHTML = countdown(tDate).toString() + "!";
+      },1000);
+  </script>
+  </body>
+</html>
