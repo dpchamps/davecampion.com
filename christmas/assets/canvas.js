@@ -15,17 +15,33 @@ var canvas = document.getElementById("canvas"),
     animFrame = null;
 
 
-var cluster = engine.particleSet(
-    {x: 250,
+var cluster = engine.particleSet({
+    origin: {x: 250,
         y: 250
     },
-    [250,200,200],
-    Math.sqrt((w*w)+(h*h)) / 2,
-    {
-        max: 80,
-        density: 1
+    color: [250, 200, 200],
+    degradeRate: Math.sqrt((w * w) + (h * h)) / 2,
+
+    max: 100,
+    density: 1
+});
+cluster.emitter = (function(){
+    var i = 0;
+
+    if(cluster.numParticles()<cluster.max){
+        while(i++ < cluster.density && cluster.numParticles() < cluster.max){
+            cluster.addParticle({
+                dir: (5*Math.PI)/4 + (Math.random()*((7*Math.PI)/4 - (5*Math.PI)/4)),
+                speed: {
+                    x: (Math.random()*2)+2,
+                    y: (Math.random()*2)+2
+                },
+                alpha: 1,
+                size: (Math.random()*2)+3
+            });
+        }
     }
-);
+});
 resizeCanvas();
 
 renderArray.push(cluster);
@@ -33,12 +49,11 @@ renderArray.push(cluster);
 var pattern = new Image();
 pattern.src = 'assets/images/snow.png';
 pattern.onload = function(){
-
     animationLoop();
 };
-var audio = new Audio('assets/music/99 1 AM (Christmas).mp3');
-audio.loop = true;
-audio.play();
+//var audio = new Audio('assets/music/99 1 AM (Christmas).mp3');
+//audio.loop = true;
+//audio.play();
 window.addEventListener('resize', resizeCanvas);
 
 function resizeCanvas(){
@@ -49,7 +64,7 @@ function resizeCanvas(){
     h = canvas.height;
     cluster.origin = {
         x: w/2,
-        y: -20
+        y: -70
     };
     cluster.degradeRate = Math.sqrt((w*w)+(h*h));
 }
@@ -65,26 +80,7 @@ function animationLoop(){
 }
 
 function render(cluster){
-    cluster.fountain(function(){
-        var i = 0;
 
-        if(cluster.numParticles()<cluster.max){
-            while(i++ < cluster.density && cluster.numParticles() < cluster.max){
-                cluster.addParticle({
-                    dir: Math.PI + (Math.random()*(Math.PI*2 - Math.PI)),
-                    speed: {
-                        x: (Math.random()*2)+2,
-                        y: (Math.random()*2)+2
-                    },
-                    alpha: 1,
-                    size: (Math.random()*2)+3
-                });
-            }
-        }
-    });
-
-
-    //console.log(pattern);
     var grd=ctx.createLinearGradient(0,0,0,h);
     grd.addColorStop(0,"#1e5799");
     grd.addColorStop(1,"#2989d8");
@@ -104,7 +100,7 @@ function render(cluster){
 
     //ctx.fillRect(0, h*0.7, w, h);
 
-
+    cluster.emitter();
     cluster.step(ctx);
 
 }
