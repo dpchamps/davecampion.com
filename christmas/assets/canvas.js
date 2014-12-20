@@ -109,6 +109,9 @@ function drawGround(){
     ctx.fill();
     ctx.restore();
 }
+function drawBulletin(){
+
+}
 function render(cluster){
 
     //drawSky();
