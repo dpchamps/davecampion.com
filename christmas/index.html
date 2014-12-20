@@ -2,7 +2,13 @@
 <html>
   <head>
     <title>It's almost Christmas!</title>
+
       <meta name="viewport" content="width=device-width">
+
+      <meta property="og:site_name" content="Websites by Dave Campion"/>
+      <meta property="og:description" content="Countdown to Christmas"/>
+      <meta name="thumbnail" content="./assets/images/thumb.png" />
+      <link href='http://fonts.googleapis.com/css?family=Mountains+of+Christmas' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="./assets/main.css" />
       <link href='./assets/fonts/stylesheet.css' rel='stylesheet' type='text/css'>
       <link rel="shortcut icon" href="favicon.ico">
@@ -13,14 +19,18 @@
     </style>
   </head>
   <body>
-    <div id="clock"></div>
     <a class="git" href="https://github.com/gasolinewaltz"><img src="./assets/images/GitHub-Mark-32px.png"></a>
     <img id="toggle-audio" src="./assets/images/volume-high.png">
+    <div id="time-wrapper">
+        <p id="clock"></p>
+    </div>
     <canvas id="canvas"></canvas>
+    <canvas id="particles"></canvas>
     <script src="./particleEngine.min.js"></script>
     <script src="./assets/countdown.min.js"></script>
     <script src="assets/canvas.js"></script>
   <script>
+
       var clock = document.getElementById('clock'),
           tDate = new Date(2014,11, 25);
       clock.innerHTML = countdown(tDate).toString() + "!";
@@ -28,6 +38,7 @@
       setInterval(function(){
           clock.innerHTML = countdown(tDate).toString() + "!";
       },1000);
+
   </script>
   </body>
 </html>
