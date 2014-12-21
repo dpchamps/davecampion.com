@@ -4,20 +4,46 @@
 }
 */
 body{
-    background: url('stressed_linen.png');
+
+    height:100%;
+    width:100%;
+}
+.container {
+    z-index: 3;
+    position: relative;
 }
 .full-height{
     height: 100vh;
 }
-
+.background{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top:0;
+    left: 0;
+    background: url('triangular.png');
+    z-index: 1;
+    opacity: 0.8;
+}
+.filter{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left:0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 2;
+}
 .main-font{
     font-family: 'Rokkitt';
     color: #e74c3c;
     text-align: left;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 }
 .main-font strong{
 
 }
+
 .absolute-parent{
     position: relative;
 }
@@ -28,6 +54,6 @@ body{
     margin: auto;
 }
 .narrow{
-    max-width: 400px;
+    max-width: 320px;
     width: 100%;
 }

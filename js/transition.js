@@ -3,5 +3,5 @@
  */
 
 setTimeout(function(){
-    $('.seperator').css('width', "85%");
+    $('.seperator').addClass('grow');
 }, 500);

@@ -1,9 +1,10 @@
 .seperator{
-  -webkit-transition: width 1s ease-out; /* For Safari 3.1 to 6.0 */
-  transition: width 1s  ease-out;
+  -webkit-transition: width 500ms ease-in-out; /* For Safari 3.1 to 6.0 */
+  transition: width 500ms  ease-in-out;
   width : 0%;
   margin-left: 0;
+  border-bottom: 2px solid #eee;
 }
 .grow{
-  width: 85%;
+  width: 95%;
 }
